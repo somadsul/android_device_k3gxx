@@ -114,6 +114,8 @@ typedef enum {
     RIL_E_SUBSCRIPTION_NOT_SUPPORTED = 26,      /* Subscription not supported by RIL */
     RIL_E_SS_MODIFIED_TO_SS = 27,               /* SS request modified to different SS request */
     RIL_E_LCE_NOT_SUPPORTED = 36                /* LCE service not supported(36 in RILConstants.java) */
+
+		
 } RIL_Errno;
 
 typedef enum {
@@ -5160,6 +5162,10 @@ typedef struct {
 #define RIL_UNSOL_TWO_MIC_STATE 11018
 #define RIL_UNSOL_DHA_STATE 11019
 #define RIL_UNSOL_UART 11020
+<<<<<<< HEAD
+=======
+#define RIL_UNSOL_SIM_PB_READY 11021
+>>>>>>> 516c73d... Update gps, gralloc, ril headers to M
 #define RIL_UNSOL_RESPONSE_HANDOVER 11038
 #define RIL_UNSOL_IPV6_ADDR 11039
 #define RIL_UNSOL_NWK_INIT_DISC_REQUEST 11040
