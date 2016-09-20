@@ -17,10 +17,10 @@ TARGET_SCREEN_WIDTH := 1080
 # Remove packages that do not work well
 PRODUCT_PACKAGES += \
     RemovePackages
-	
+    
 # Shims
 PRODUCT_PACKAGES += \
-libsamsung_symbols
+    libsamsung_symbols
 
 # MobiCore setup
 PRODUCT_PACKAGES += \
