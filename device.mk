@@ -14,6 +14,11 @@ TARGET_BOOTANIMATION_HALF_RES := true
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
+# Display
+PRODUCT_PACKAGES += \
+    SamsungDoze \
+    SamsungServiceMode
+
 # Remove packages that do not work well
 PRODUCT_PACKAGES += \
     RemovePackages
