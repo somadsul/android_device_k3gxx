@@ -270,6 +270,7 @@ PRODUCT_PACKAGES += \
     libwpa_client \
     wpa_supplicant \
     libnetcmdiface \
+	modemloader \
     macloader
 
 # call Samsung LSI board support package
