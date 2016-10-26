@@ -10,10 +10,11 @@ TARGET_SOC := exynos5422
 TARGET_BUILD_VARIANT := userdebug
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_VARIANT := cortex-a15
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
-TARGET_CPU_VARIANT := cortex-a7
+
 # big.LITTLE load balancing
 ENABLE_CPUSETS := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
@@ -33,12 +34,14 @@ TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
 ### CAMERA
-# frameworks/av/services/camera/libcameraservice
+BOARD_CAMERA_SNUMINTS := 20
 BOARD_NEEDS_MEMORYHEAPION := true
-# hardware/samsung_slsi-cm/exynos5/libgscaler
 BOARD_USES_SCALER := true
 BOARD_USES_DT := true
 BOARD_USES_DT_SHORTNAME := true
+COMMON_GLOBAL_CFLAGS += -DCAMERA_SNUMINTS=$(BOARD_CAMERA_SNUMINTS)
+COMMON_GLOBAL_CFLAGS += -DSAMSUNG_DVFS
+
 # frameworks/av/camera, camera blob support
 COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_HARDWARE
 # frameworks/av/media/libstagefright, for libwvm.so
@@ -77,13 +80,8 @@ BOARD_CUSTOM_BOOTIMG_MK := device/samsung/k3gxx/mkdtbhbootimg.mk
 BOARD_CUSTOM_MKBOOTIMG := mkdtbhbootimg
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x11000000 --tags_offset 0x10000100
 BOARD_MKBOOTIMG_ARGS += --dt_dir $(OUT)/obj/KERNEL_OBJ/arch/arm/boot/dts/
-#BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x11000000 --dt device/samsung/k3gxx/recovery/dt.img --tags_offset 0x10000100
-#BOARD_KERNEL_SEPARATED_DT := true
-#TARGET_PREBUILT_KERNEL := device/samsung/k3gxx/recovery/zImage
 TARGET_KERNEL_SOURCE := kernel/samsung/exynos5422
 TARGET_KERNEL_CONFIG := exynos5422-k3g_00_defconfig
-#BOARD_KERNEL_CMDLINE := console=ram vmalloc=256m androidboot.console=null user_debug=31
-#BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive user_debug=31
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
 
