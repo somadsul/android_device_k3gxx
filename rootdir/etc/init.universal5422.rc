@@ -15,7 +15,6 @@ on init
     symlink /sdcard1 /mnt/extSdCard
     symlink /sdcard1 /mnt/sdcard1
     symlink /sdcard1 /external_sd
-    symlink /storage/usbdisk /mnt/usbdisk
 
     symlink /data/app /factory
 
@@ -363,7 +362,6 @@ on boot
 
 on fs
     mount_all /fstab.universal5422
-#    setprop ro.crypto.fuse_sdcard true
 
     chown radio radio /sys/devices/virtual/misc/multipdp/waketime
     chmod 0660 /sys/devices/virtual/misc/umts_dm0/dm_state
