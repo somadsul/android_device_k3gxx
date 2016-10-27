@@ -114,8 +114,6 @@ typedef enum {
     RIL_E_SUBSCRIPTION_NOT_SUPPORTED = 26,      /* Subscription not supported by RIL */
     RIL_E_SS_MODIFIED_TO_SS = 27,               /* SS request modified to different SS request */
     RIL_E_LCE_NOT_SUPPORTED = 36                /* LCE service not supported(36 in RILConstants.java) */
-
-		
 } RIL_Errno;
 
 typedef enum {
@@ -1773,7 +1771,6 @@ typedef struct {
  * RIL_REQUEST_CONFERENCE
  *
  * Conference holding and active (like AT+CHLD=3)
-
  * "data" is NULL
  * "response" is NULL
  *
@@ -4121,7 +4118,6 @@ typedef struct {
  *  NO_SUCH_ELEMENT
  */
 #define RIL_REQUEST_SIM_OPEN_CHANNEL 115
-
 /**
  * RIL_REQUEST_SIM_CLOSE_CHANNEL
  *
@@ -4822,7 +4818,6 @@ typedef struct {
  * Indicates that SIM state changes.
  *
  * Callee will invoke RIL_REQUEST_GET_SIM_STATUS on main thread
-
  * "data" is null
  */
 #define RIL_UNSOL_RESPONSE_SIM_STATUS_CHANGED 1019
@@ -5162,8 +5157,6 @@ typedef struct {
 #define RIL_UNSOL_TWO_MIC_STATE 11018
 #define RIL_UNSOL_DHA_STATE 11019
 #define RIL_UNSOL_UART 11020
-#define RIL_UNSOL_SIM_PB_READY 11021
-	
 #define RIL_UNSOL_RESPONSE_HANDOVER 11038
 #define RIL_UNSOL_IPV6_ADDR 11039
 #define RIL_UNSOL_NWK_INIT_DISC_REQUEST 11040
