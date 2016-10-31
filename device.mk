@@ -194,16 +194,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/audio/audio_effects.conf:system/etc/audio_effects.conf \
 	$(LOCAL_PATH)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
-	$(LOCAL_PATH)/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
-	$(LOCAL_PATH)/configs/audio/ysound.xml:system/etc/ysound.xml
+	$(LOCAL_PATH)/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
 PRODUCT_PACKAGES += \
 	audio.a2dp.default \
 	audio.usb.default \
 	audio.r_submix.default \
-	libtinyxml \
-    libtinyalsa \
-    tinymix
+	audio.primary.universal5422
 	
 ###########################################################
 ### OMX/MEDIA
@@ -241,8 +238,8 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/gps/gps.xml:system/etc/gps.xml
 
 PRODUCT_PACKAGES += \
-    libdmitry
-	gps.universal5422 \
+    libdmitry \
+	gps.universal5422
 
 ###########################################################
 ### FINGERPRINT
@@ -303,7 +300,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
 	SamsungServiceMode \
-	SamsungDoze \
+	SamsungDoze
 
 ###########################################################
 ### CONSUMERIR
@@ -362,12 +359,7 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.securestorage.knox=false \
 	security.knox_kap_mode=false \
 	selinux.reload_policy=0 \
-	persist.security.mdm.policy=0 \
-	ro.sys.fw.dex2oat_thread_count=4
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-filter=speed \
-    dalvik.vm.dex2oat-swap=false
+	persist.security.mdm.policy=0
 
 $(call inherit-product-if-exists, build/target/product/full.mk)
 # call Samsung LSI board support package
