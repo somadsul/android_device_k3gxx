@@ -110,7 +110,7 @@
 
 # MobiCore
 /dev/mobicore             0700   system     system
-/dev/mobicore-user        0666   radio     system
+/dev/mobicore-user        0666   radio      system
 
 # rfkill
 /dev/rfkill               0660   root       wifi
