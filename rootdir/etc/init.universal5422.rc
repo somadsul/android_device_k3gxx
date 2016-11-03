@@ -1,3 +1,4 @@
+import init.universal5422.power.rc
 import init.universal5422.wifi.rc
 import init.universal5422.usb.rc
 import init.samsung.rc
