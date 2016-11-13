@@ -393,6 +393,10 @@ on fs
     # Fingerprint_sensor
     chown system radio /sys/class/fingerprint/fingerprint/type_check
 
+# OTG power mode
+    chmod 0660 /sys/class/sec/switch/otg_cable_type
+    chown system radio /sys/class/sec/switch/otg_cable_type
+
 # SENSORS
 # Accelerometer_sensor
     chown system radio /sys/class/sensors/accelerometer_sensor/raw_data
