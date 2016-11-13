@@ -244,15 +244,23 @@ public class k3gxxRIL extends RIL implements CommandsInterface {
             dc.als = p.readInt();
             voiceSettings = p.readInt();
             dc.isVoice = (0 != voiceSettings);
+			boolean isVideo = (0 != p.readInt());   // Samsung
             int call_type = p.readInt();            // Samsung CallDetails
             int call_domain = p.readInt();          // Samsung CallDetails
             String csv = p.readString();            // Samsung CallDetails
+			
             dc.isVoicePrivacy = (0 != p.readInt());
             dc.number = p.readString();
-            int np = p.readInt();
-            dc.numberPresentation = DriverCall.presentationFromCLIP(np);
+            if (RILJ_LOGV) {
+                riljLog("responseCallList dc.number=" + dc.number);
+            }
+            dc.numberPresentation = DriverCall.presentationFromCLIP(p.readInt());
             dc.name = p.readString();
+            if (RILJ_LOGV) {
+                riljLog("responseCallList dc.name=" + dc.name);
+            }
             dc.namePresentation = p.readInt();
+
             int uusInfoPresent = p.readInt();
             if (uusInfoPresent == 1) {
                 dc.uusInfo = new UUSInfo();
