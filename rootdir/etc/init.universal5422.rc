@@ -7,7 +7,7 @@ on early-init
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
 on init
-    export LD_SHIM_LIBS "libsamsung_symbols.so:/system/lib/omx/libOMX.Exynos.WMV.Decoder.so|libsamsung_symbols.so:/system/lib/omx/libOMX.Exynos.MPEG4.Decoder.so|libsamsung_symbols.so:/system/lib/omx/libOMX.Exynos.MPEG4.Encoder.so|libsamsung_symbols.so:/system/lib/omx/libOMX.Exynos.VP8.Encoder.so|libsamsung_symbols.so:/system/lib/omx/libOMX.Exynos.AVC.Encoder.so|libsamsung_symbols.so:/system/lib/omx/libOMX.Exynos.AVC.Decoder.so|libsamsung_symbols.so:/system/lib/omx/libOMX.Exynos.VP8.Decoder.so|libsamsung_symbols.so:/system/bin/gpsd|libdmitry.so"
+    export LD_SHIM_LIBS "/system/lib/libexynoscamera.so|libsamsung_symbols.so:/system/bin/gpsd|libdmitry.so"
     mkdir /preload 0771 system system
 
     symlink /sdcard /mnt/sdcard
@@ -40,23 +40,15 @@ on post-fs-data
     setprop vold.post_fs_data_done 1
 
     # Permissions Camera
+	chown system radio /sys/class/camera/rear/isp_core
+	chown system radio /sys/class/camera/rear/rear_calcheck
     chown system radio /sys/class/camera/rear/rear_camfw
     chown system radio /sys/class/camera/rear/rear_camfw_full
     chown system radio /sys/class/camera/rear/rear_camtype
-	chown system radio /sys/class/camera/rear/rear_checkfw_factory
-	chown system radio /sys/class/camera/rear/rear_checkfw_user
-    chown system radio /sys/class/camera/rear/rear_companionfw
-    chown system radio /sys/class/camera/rear/rear_companionfw_full
-	chown system radio /sys/class/camera/rear/rear_sensorid
-    chown system radio /sys/class/camera/rear/rear_calcheck
-    chown system radio /sys/class/camera/rear/isp_core
+
     chown system radio /sys/class/camera/flash/rear_flash
     chown system radio /sys/class/camera/front/front_camfw
     chown system radio /sys/class/camera/front/front_camtype
-    chown system radio /sys/class/camera/front/front_sensorid
-
-    #Permissions for Camera to flush cache buffers
-    chown system system /sys/devices/virtual/sec/sec_misc/drop_caches
 
 #Private Mode
     mkdir /data/privatemode 0770 system system
@@ -88,8 +80,11 @@ on boot
     chown radio system /sys/class/secgpio_check/secgpio_check_all/gpioinit_check
     chown radio system /sys/class/secgpio_check/secgpio_check_all/gpiosleep_check
     chown radio system /sys/class/secgpio_check/secgpio_check_all/checked_sleepGPIO
+	
+# create camera directory
+    mkdir /data/camera 0700 media media
 
-    # GPS
+# GPS
     chown root system /dev/ttySAC1
     chmod 0660 /dev/ttySAC1
     chown root system /sys/class/sec/gps/GPS_PWR_EN/value
@@ -103,10 +98,10 @@ on boot
     rm /data/beidou_started
     rm /data/smd_started
     rm /data/sv_cno.info
-    # Reduce reserved lowmem from ~48MB to ~12MB
+# Reduce reserved lowmem from ~48MB to ~12MB
     write /proc/sys/vm/lowmem_reserve_ratio "128 128"
 
-    # For kernel lock in BT/WiFi race condtion
+# For kernel lock in BT/WiFi race condtion
     chmod 0600 /dev/btlock
     chown bluetooth bluetooth /dev/btlock
 
@@ -503,11 +498,11 @@ on fs
     chown system system /sys/class/backlight/panel/auto_brightness
 
 # Permissions for LCD
+    chown system radio /sys/class/lcd/panel/contrast
+    chown system radio /sys/class/lcd/panel/lcd_power
     chown system radio /sys/class/lcd/panel/lcd_type
-    chown system system /sys/class/lcd/panel/power_reduce
-    chown system system /sys/class/lcd/panel/siop_enable
-    chown system system /sys/class/lcd/panel/temperature
-    chown system system /sys/class/lcd/panel/alpm
+    chown system radio /sys/class/lcd/panel/max_contrast
+    chown system radio /sys/class/lcd/panel/window_type
 
 # Permissions for MDNIE
     chown system media_rw /sys/class/mdnie/mdnie/mode
@@ -622,11 +617,7 @@ on property:ro.debuggable=1
 service goldfish-setup /system/etc/init.goldfish.sh
     user root
     group root
-    oneshot
-
-on property:init.svc.bootanim=stopped
-    start camera_id    
-    
+    oneshot    
 
 # SENSOR FRAMEWORK : starts fingerprintService
 service vcsFPService /system/bin/vcsFPService

@@ -23,7 +23,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     RemovePackages
     
-# Shims
+# Shims/Samsung symbols
 PRODUCT_PACKAGES += \
     libsamsung_symbols
 
