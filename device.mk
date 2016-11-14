@@ -260,12 +260,12 @@ PRODUCT_PACKAGES += \
 ###########################################################
 
 PRODUCT_PACKAGES += \
-	libhwjpeg \
-	camera.universal5422
+	camera.universal5422 \
+	libhwjpeg
 
 # This fixes switching between front/back camera sensors
-PRODUCT_PROPERTY_OVERRIDES += \
-    camera2.portability.force_api=1
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    camera2.portability.force_api=1
 
 ###########################################################
 ### TOUCHSCREEN/KEYLAYOUTS
