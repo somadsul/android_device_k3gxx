@@ -51,7 +51,8 @@ PRODUCT_PACKAGES += \
     libsecril-client-sap \
     libril \
     librilutils \
-    rild 
+    rild \
+    libxml2
 
 # IO Scheduler
 PRODUCT_PROPERTY_OVERRIDES += \
