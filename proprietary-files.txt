@@ -88,6 +88,8 @@ lib/lib_SoundAlive_play_ver125e.so
 lib/libstagefright_hdcp.so
 lib/libvdis.so
 lib/libwrappergps.so
+lib/libxml2.so
+lib/libprotobuf-cpp-full.so
 
 ### FingerPrint
 lib/libfpasmtztransport.so
