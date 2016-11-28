@@ -36,7 +36,7 @@ import java.util.Collections;
  *
  * {@hide}
  */
-public class k3gxxRIL extends RIL implements CommandsInterface {
+public class k3gxxRIL extends RIL {
 
     /**********************************************************
      * SAMSUNG REQUESTS
@@ -54,11 +54,11 @@ public class k3gxxRIL extends RIL implements CommandsInterface {
 
     private static final int RIL_UNSOL_WB_AMR_STATE = 20017;
 
-    public SlteRIL(Context context, int preferredNetworkType, int cdmaSubscription) {
+    public k3gxxRIL(Context context, int preferredNetworkType, int cdmaSubscription) {
         this(context, preferredNetworkType, cdmaSubscription, null);
     }
 
-    public SlteRIL(Context context, int preferredNetworkType,
+    public k3gxxRIL(Context context, int preferredNetworkType,
                    int cdmaSubscription, Integer instanceId) {
         super(context, preferredNetworkType, cdmaSubscription, instanceId);
     }
@@ -327,7 +327,7 @@ public class k3gxxRIL extends RIL implements CommandsInterface {
             String strState = strings[i+3].toLowerCase();
 
             Rlog.v(RILJ_LOG_TAG,
-                   "XMM7260: Add OperatorInfo: " + strOperatorLong +
+                   "XMM6360: Add OperatorInfo: " + strOperatorLong +
                    ", " + strOperatorLong +
                    ", " + strOperatorNumeric +
                    ", " + strState);
@@ -357,13 +357,13 @@ public class k3gxxRIL extends RIL implements CommandsInterface {
             case RIL_UNSOL_DEVICE_READY_NOTI: /* Registrant notification */
             case RIL_UNSOL_SIM_PB_READY: /* Registrant notification */
                 Rlog.v(RILJ_LOG_TAG,
-                       "XMM7260: ignoring unsolicited response " +
+                       "XMM6360: ignoring unsolicited response " +
                        origResponse);
                 return;
         }
 
         if (newResponse != origResponse) {
-            riljLog("SlteRIL: remap unsolicited response from " +
+            riljLog("k3gxxRIL: remap unsolicited response from " +
                     origResponse + " to " + newResponse);
             p.setDataPosition(dataPosition);
             p.writeInt(newResponse);
@@ -389,7 +389,7 @@ public class k3gxxRIL extends RIL implements CommandsInterface {
             case RIL_UNSOL_AM:
                 String strAm = (String)ret;
                 // Add debug to check if this wants to execute any useful am command
-                Rlog.v(RILJ_LOG_TAG, "XMM7260: am=" + strAm);
+                Rlog.v(RILJ_LOG_TAG, "XMM6360: am=" + strAm);
                 break;
         }
     }
