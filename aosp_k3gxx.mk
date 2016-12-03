@@ -371,5 +371,5 @@ $(call inherit-product-if-exists, build/target/product/full.mk)
 $(call inherit-product, hardware/samsung_slsi-cm/exynos5/exynos5.mk)
 $(call inherit-product, hardware/samsung_slsi-cm/exynos5422/exynos5422.mk)
 
-PRODUCT_NAME := full_k3gxx
+PRODUCT_NAME := aosp_k3gxx
 PRODUCT_DEVICE := k3gxx

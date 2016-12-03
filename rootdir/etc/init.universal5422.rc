@@ -67,6 +67,7 @@ on boot
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
 
+    cat /proc/last_kmsg > /sdcard/last_kmsg_init
 # MSP FactoryApp
     mkdir /efs/FactoryApp 0775 system system
 
