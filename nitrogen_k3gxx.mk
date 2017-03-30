@@ -1,17 +1,16 @@
 # Release name
 PRODUCT_RELEASE_NAME := k3gxx
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit some common Nitrogen stuff.
+$(call inherit-product, vendor/nitrogen/products/common.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/samsung/k3gxx/device.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_base.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 $(call inherit-product, device/samsung/k3gxx/system_prop.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_NAME := lineage_k3gxx
+PRODUCT_NAME := nitrogen_k3gxx
 PRODUCT_DEVICE := k3gxx
 PRODUCT_BRAND := samsung
 PRODUCT_MODEL:= SM-G900H

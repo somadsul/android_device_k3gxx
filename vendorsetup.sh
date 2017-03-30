@@ -1,2 +1,1 @@
-add_lunch_combo lineage_k3gxx-eng
-add_lunch_combo lineage_k3gxx-userdebug
+add_lunch_combo nitrogen_k3gxx-userdebug
