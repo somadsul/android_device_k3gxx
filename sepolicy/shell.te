@@ -1,0 +1,3 @@
+# ttySAC2
+allow shell device:chr_file { getattr ioctl };
+allow untrusted_app exfat:file read;
