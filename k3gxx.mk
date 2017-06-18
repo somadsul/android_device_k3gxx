@@ -41,17 +41,17 @@ PRODUCT_PACKAGES += \
 ###########################################################
 
 PRODUCT_PACKAGES += \
-	fstab.universal5422 \
-	init.recovery.universal5422.rc \
-	init.samsung.rc \
-	init.universal5422.rc \
-	init.universal5422.usb.rc \
-	init.universal5422.wifi.rc \
-	ueventd.universal5422.rc \
-	init.rc \
-	recovery.fstab \
-	adb_keys \
-	init.goldfish.sh
+    fstab.universal5422 \
+    init.recovery.universal5422.rc \
+    init.samsung.rc \
+    init.universal5422.rc \
+    init.universal5422.usb.rc \
+    init.universal5422.wifi.rc \
+    ueventd.universal5422.rc \
+    init.rc \
+    recovery.fstab \
+    adb_keys \
+    init.goldfish.sh
 
 ###########################################################
 ### PERMISSONS
@@ -108,20 +108,17 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi 
 
 PRODUCT_PACKAGES += \
-	libion_exynos \
-	libfimg \
-	gralloc.exynos5
+    libion_exynos \
+    gralloc.exynos5 \
+    libfimg
 
 ###########################################################
 ### RADIO
 ###########################################################
 
-# cpboot-daemon for modem
-#PRODUCT_COPY_FILES += \
-#   $(LOCAL_PATH)/ril/sbin/cbd:root/sbin/cbd
 PRODUCT_PACKAGES += \
-	modemloader \
-	cbd \
+    modemloader \
+    cbd \
     
 ###########################################################
 ### WIFI
@@ -309,15 +306,15 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     consumerir.universal5422
-	
-# Default.prop overrides to get adb working at boot   
+
+# adb has root
 ADDITIONAL_DEFAULT_PROPERTIES += \
-    ro.secure=0 \
     ro.adb.secure=0 \
-    ro.zygote=zygote32 \
+    persist.adb.notify=0 \
+    ro.secure=0 \
+    ro.debuggable=1 \
     persist.service.adb.enable=1 \
-	persist.service.debuggable=1 \
-	persist.sys.usb.config=mtp,adb
+    persist.sys.isUsbOtgEnabled=true
 
 $(call inherit-product-if-exists, build/target/product/full.mk)
 # call Samsung LSI board support package

@@ -15,6 +15,7 @@ on init
     symlink /sdcard1 /mnt/extSdCard
     symlink /sdcard1 /mnt/sdcard1
     symlink /sdcard1 /external_sd
+    symlink /storage/usbdisk /mnt/usbdisk
 
     symlink /data/app /factory
 

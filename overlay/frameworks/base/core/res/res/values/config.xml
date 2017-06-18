@@ -153,7 +153,7 @@
     <!-- ### DISPLAY                                                    -->
     <!-- ############################################################## -->
 
-	<!-- If this is true, the screen will fade off. -->
+    <!-- If this is true, the screen will fade off. -->
     <bool name="config_animateScreenLights">false</bool>
 
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
